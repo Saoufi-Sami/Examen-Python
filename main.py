@@ -1,4 +1,29 @@
 
+# Pour cet exercice, vous allez créer un programme de conversion d'unités,
+# capable de convertir des pouces (inch) en centimètres (cm), et inversement.
+#
+# Rappels :
+# 1 pouce = 2.54 cm
+# 1 cm = 0.394 pouces
+#
+# Exemple :
+# Un écran de 17 pouces de diagonale correspond à 43,18 cm (17 * 2.54)
+#
+# Comportement attendu du programme :
+# 1 - Demander à l'utilisateur s'il souhaite convertir :
+#     - de pouces vers centimètres
+#     - ou de centimètres vers pouces
+# 2 - Demander à l'utilisateur de saisir la valeur à convertir
+#     (en réaffichant l’unité demandée)
+# 3 - Afficher la valeur convertie avec l'unité correspondante (cm ou pouces)
+# - Fin du programme
+
+
+
+
+
+
+
 option_un = "pouce vers centimetre"
 option_deux = "centimetre vers pouce"
 
