@@ -18,36 +18,84 @@
 # 3 - Afficher la valeur convertie avec l'unité correspondante (cm ou pouces)
 # - Fin du programme
 
+#Optionnel :
+#Boucler pour convertir plusieurs valeurs (en conservant toujours le même sens de conversion)
+# et proposer une option pour sortir du programme.
 
 
 
 
-
-
-option_un = "pouce vers centimetre"
-option_deux = "centimetre vers pouce"
+option_un = "1"
+option_deux = "2"
 
 unpouce = 2.54
 uncm = 0.394
+taillemini_cm = 43
+taillemini_pouce = 17
 
 
-
-reponse_str = input("Vous souhaitez convertir de " + option_un + " ou de " + option_deux + " ? ")
+reponse_str = input(
+    "Vous souhaitez convertir de pouce vers centimetre ? Tapez "
+    + option_un
+    + ". ou de centimetre vers pouce ? Tapez "
+    + option_deux
+    + " : "
+)
 
 
 if reponse_str == option_un:
-    choix_un = input("Rentrer la valeur à convertir en  " + option_un + " : " )
-    choix_un_float = float(choix_un)
-    choix_un_resultat = round(choix_un_float * unpouce,2)
-    print("Resultat : " + choix_un + " pouces = " + str(choix_un_resultat) + " cm ")
+    while True:
+        choix_un = input("Rentrer la valeur à convertir en pouce vers centimetre : ")
 
+        try:
+            choix_un_float = float(choix_un)
+        except ValueError:
+            print("Veuillez entrer un nombre valide")
+        else:
+            choix_un_resultat = round(choix_un_float * unpouce, 2)
+
+            if choix_un_resultat < taillemini_cm:
+                print(
+                    "Resultat : " + choix_un + " pouces = "
+                    + str(choix_un_resultat)
+                    + " cm vous devez atteindre au moins "
+                    + str(taillemini_cm) + " cm "
+                )
+            else:
+                print(
+                    "Resultat : " + choix_un + " pouces = "
+                    + str(choix_un_resultat)
+                    + " cm vous avez atteint le minimum demandé "
+                )
+                break
 
 
 elif reponse_str == option_deux:
-    choix_deux = input("Rentrer la valeur à convertir en " + option_deux + " : ")
-    choix_deux_float = float(choix_deux)
-    choix_deux_resultat = round(choix_deux_float * uncm,2)
-    print("Resultat : " + choix_deux + " cm = " + str(choix_deux_resultat) + " pouces")
+    while True:
+        choix_deux = input("Rentrer la valeur à convertir en centimetre vers pouce : ")
+
+        try:
+            choix_deux_float = float(choix_deux)
+        except ValueError:
+            print("Veuillez entrer un nombre valide")
+        else:
+            choix_deux_resultat = round(choix_deux_float * uncm, 2)
+
+            if choix_deux_resultat < taillemini_pouce:
+                print(
+                    "Resultat : " + choix_deux + " cm = "
+                    + str(choix_deux_resultat)
+                    + " pouces vous devez atteindre au moins "
+                    + str(taillemini_pouce) + " pouces "
+                )
+            else:
+                print(
+                    "Resultat : " + choix_deux + " cm = "
+                    + str(choix_deux_resultat)
+                    + " pouces vous avez atteint le minimum demandé "
+                )
+                break
+
 
 else:
-    print("Veuillez choisir " + option_un + " ou " + option_deux )
+    print("Veuillez choisir " + option_un + " ou " + option_deux)
