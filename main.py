@@ -1,4 +1,4 @@
-
+# Correction
 # Pour cet exercice, vous allez créer un programme de conversion d'unités,
 # capable de convertir des pouces (inch) en centimètres (cm), et inversement.
 #
@@ -23,79 +23,78 @@
 # et proposer une option pour sortir du programme.
 
 
+# Cette fonction effectue la conversion de unit 1 vers unit 2
+# return True : l'utilisateur ne veut plus convertir et on sort du programme
+# return False l'utilisateur donne une valeur a  convertir
+
+def demander_et_afficher_conversion(unit1, unit2, facteur):
+    valeur_str = input(f"Conversion {unit1}-> {unit2}. Donnez la valeur en {unit1} ou 'q' pour quitter: ")
+    if valeur_str == "q":
+        return True
+    valeur_float = float(valeur_str)
+    valeur_convertie = round(valeur_float * facteur, 2)
+    print(f"Résultat de la conversion : {valeur_float} {unit1} = {valeur_convertie} {unit2}")
+    return False
 
 
-option_un = "1"
-option_deux = "2"
 
-unpouce = 2.54
-uncm = 0.394
-taillemini_cm = 43
-taillemini_pouce = 17
+while True :
+    # Menu : choix de la conversion
+    print("Ce programme vous permet dreffectuer des conversions d'unités")
+    print("1 - Pouces vers cm")
+    print("2 - cm vers pouces")
+    choix = input("vVotre choix (1 ou 2): ")
+    if choix == "1" or choix == "2":
+        break
+    print("ERREUR : Vous devez choisir 1 ou 2")
 
+while True:
+    # Demander les valeurs à convertir a l'utilisateur
+    if choix == "1":
+        if demander_et_afficher_conversion("pouces", "cm", 2.54):
+            break
 
-reponse_str = input(
-    "Vous souhaitez convertir de pouce vers centimetre ? Tapez "
-    + option_un
-    + ". ou de centimetre vers pouce ? Tapez "
-    + option_deux
-    + " : "
-)
-
-
-if reponse_str == option_un:
-    while True:
-        choix_un = input("Rentrer la valeur à convertir en pouce vers centimetre : ")
-
-        try:
-            choix_un_float = float(choix_un)
-        except ValueError:
-            print("Veuillez entrer un nombre valide")
-        else:
-            choix_un_resultat = round(choix_un_float * unpouce, 2)
-
-            if choix_un_resultat < taillemini_cm:
-                print(
-                    "Resultat : " + choix_un + " pouces = "
-                    + str(choix_un_resultat)
-                    + " cm vous devez atteindre au moins "
-                    + str(taillemini_cm) + " cm "
-                )
-            else:
-                print(
-                    "Resultat : " + choix_un + " pouces = "
-                    + str(choix_un_resultat)
-                    + " cm vous avez atteint le minimum demandé "
-                )
-                break
+            # On vérifie d'abord le choix (1 ou 2).
+            # Ensuite seulement, dans la fonction appelée, on demande la valeur ou 'q' pour quitter.
+            # Si la fonction retourne True (q), on sort de la boucle.
+            # Sinon, la fonction continue son exécution et passe aux instructions suivantes
+            # (conversion, affichage du résultat), puis la boucle recommence.
 
 
-elif reponse_str == option_deux:
-    while True:
-        choix_deux = input("Rentrer la valeur à convertir en centimetre vers pouce : ")
+    # En Python, un `if fonction():` teste automatiquement si le retour vaut True
+    # (comme s’il y avait un `== True` invisible).
+    # Si la fonction retourne True, l’action du if s’exécute (ici : break).
+    # Dans ce programme, quand l’utilisateur tape 'q', la fonction retourne True,
+    # donc le if voit True et déclenche le break.
+    # Si la fonction retourne False et qu’il n’y a pas de else,
+    # le programme continue simplement son exécution.
 
-        try:
-            choix_deux_float = float(choix_deux)
-        except ValueError:
-            print("Veuillez entrer un nombre valide")
-        else:
-            choix_deux_resultat = round(choix_deux_float * uncm, 2)
-
-            if choix_deux_resultat < taillemini_pouce:
-                print(
-                    "Resultat : " + choix_deux + " cm = "
-                    + str(choix_deux_resultat)
-                    + " pouces vous devez atteindre au moins "
-                    + str(taillemini_pouce) + " pouces "
-                )
-            else:
-                print(
-                    "Resultat : " + choix_deux + " cm = "
-                    + str(choix_deux_resultat)
-                    + " pouces vous avez atteint le minimum demandé "
-                )
-                break
+    if choix == "2":
+        if demander_et_afficher_conversion("cm", "pouces", 0.394):
+            break
 
 
-else:
-    print("Veuillez choisir " + option_un + " ou " + option_deux)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
